@@ -35,7 +35,13 @@ if __name__ == '__main__':
     numParticipantes = int(input("Ingrese el número de participantes: "))
     lista = participantes(numParticipantes)
     numeroRandom = random.randrange(numParticipantes)
-    print(lista[numeroRandom])
+    print(f"Ganador {lista[numeroRandom]}")
+    
+    def participantes(numParticipantes):
+        lista=[]
+        lista.append(input("ingrese el nombre de los participantes: ")
+        #print(lista)
+        return lista
     '''
     ######gui########
     lbl1 = Label(gui,text="número de participantes: ")
