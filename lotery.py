@@ -13,9 +13,9 @@ if __name__ == '__main__':
                 lista.append(input(f"Ingresa el nombre del participante número {x+1}: "))
             
             numRandom = random.randrange(numParticipantes)
-            ganador = lista[numRandom]
-            ganado = str(ganador)
-            ctypes.windll.user32.MessageBoxW(0,f"el participante número {numRandom+1} es: {ganado}","Winner",1)
+            participantes = lista[numRandom]
+            ganador = str(participantes)
+            ctypes.windll.user32.MessageBoxW(0,f"el participante ganador es: {ganador}","Winner",1)
         except ValueError as numero:
             ctypes.windll.user32.MessageBoxW(0,"Recuerda colocar el número de participantes","Warning",1)
         except RuntimeError as lista:
@@ -45,6 +45,8 @@ if __name__ == '__main__':
     ####Botón para habilitar el txtBox
     Button(gui, text="Habilitar", command=lambda:habilitar()).grid(row=6,column=1)
     txtBox = Entry(gui)
+    ####botón para salir####
+    Button(gui, text="salir", command=lambda:exit()).grid(row=6, column=0)
     ####grillas####
     lbl1.grid(row=5, column=1)
     txtBox.grid(row=5, column=3)
