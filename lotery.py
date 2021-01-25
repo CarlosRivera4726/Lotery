@@ -1,8 +1,9 @@
 import random
 from tkinter import *
+from tkinter import messagebox
 from os import system
 import os
-import ctypes  # An included library with Python install. 
+
 if __name__ == '__main__':
     def participantes(numero):
         txtBox["state"]="disabled"
@@ -15,11 +16,12 @@ if __name__ == '__main__':
             numRandom = random.randrange(numParticipantes)
             participantes = lista[numRandom]
             ganador = str(participantes)
-            ctypes.windll.user32.MessageBoxW(0,f"el participante ganador es: {ganador}","Winner",1)
+            nameOs = os.name
+            messagebox.showwarning("Winner",f"el participante ganador es: {ganador}")
         except ValueError as numero:
-            ctypes.windll.user32.MessageBoxW(0,"Recuerda colocar el número de participantes","Warning",1)
+            messagebox.showwarning("Warning","Recuerda colocar el número de participantes")
         except RuntimeError as lista:
-            ctypes.windll.user32.MessageBoxW(0,"has presionado muchas veces el botón de número de participantes!, completa primero la anterior!","Warning",1)
+            messagebox.showwarning("Warning","has presionado muchas veces el botón de número de participantes!, completa primero la anterior!")
     ####función para habilitar el txtBox y limpiar la consola
     def habilitar():
         txtBox["state"]="normal"
