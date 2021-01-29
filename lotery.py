@@ -6,9 +6,9 @@ import os
 def participantes(numero):
         txtBox["state"]="disabled"
         try:
-            numParticipantes = int(numero)
+            numeroParticipantes = int(numero)
             lista = []
-            for x in range(0,numParticipantes):
+            for x in range(0,numeroParticipantes):
                 nombreParticipante = input(f"Ingresa el nombre del participante número {x+1}: ")
                 if len(nombreParticipante) != 0:
                     lista.append(nombreParticipante)
@@ -19,11 +19,11 @@ def participantes(numero):
                     else:
                       lista.append(nombreParticipante)  
 
-            numRandom = random.randrange(numParticipantes)
+            numeroRandom = random.randrange(numeroParticipantes)
             participantes = lista[numRandom]
             ganador = str(participantes)
 
-            messagebox.showinfo("Winner",f"el participante ganador es: \n\n\t{numRandom+1}) {ganador}")
+            messagebox.showinfo("Winner",f"el participante ganador es: \n\n\t{numeroRandom+1}) {ganador}")
         except ValueError as numero:
             messagebox.showwarning("Warning","Recuerda colocar el número de participantes")
         except RuntimeError as lista:
