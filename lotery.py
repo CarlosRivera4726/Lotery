@@ -3,48 +3,46 @@ from tkinter import *
 from tkinter import messagebox
 from os import system
 import os
-
-if __name__ == '__main__':
-    def participantes(numero):
+def participantes(numero):
         txtBox["state"]="disabled"
         try:
             numParticipantes = int(numero)
             lista = []
             for x in range(0,numParticipantes):
-                lista.append(input(f"Ingresa el nombre del participante número {x+1}: "))
-            
+                nombreParticipante = input(f"Ingresa el nombre del participante número {x+1}: ")
+                if len(nombreParticipante) != 0:
+                    lista.append(nombreParticipante)
+                else:
+                    nombreParticipante = input(f"Ingresa el nombre del participante número {x+1}: ")
+                    if len(nombreParticipante) == 0:
+                        break
+                    else:
+                      lista.append(nombreParticipante)  
+
             numRandom = random.randrange(numParticipantes)
             participantes = lista[numRandom]
             ganador = str(participantes)
-            nameOs = os.name
-            messagebox.showwarning("Winner",f"el participante ganador es: {ganador}")
+
+            messagebox.showinfo("Winner",f"el participante ganador es: \n\n\t{numRandom+1}) {ganador}")
         except ValueError as numero:
             messagebox.showwarning("Warning","Recuerda colocar el número de participantes")
         except RuntimeError as lista:
-            messagebox.showwarning("Warning","has presionado muchas veces el botón de número de participantes!, completa primero la anterior!")
-    ####función para habilitar el txtBox y limpiar la consola
-    def habilitar():
+            messagebox.showwarning("Warning","has presionado el botón de agregar numero de participantes repetidas veces, debes terminar el programa anterior")
+        except IndexError as lista:
+            messagebox.showwarning("ERROR!!!!","No has ingresado ningún nombre y la lista no pudo continuar")        
+def habilitar():
         txtBox["state"]="normal"
         if os.name == "nt":
             system("cls")
         else:
             system("clear")
 
+if __name__ == '__main__':        
+    ####función para habilitar el txtBox y limpiar la consola
+
     gui = Tk()
     gui.title("Sorteo!!!!!!!")
-    ######logic#####
-    '''
-    numParticipantes = int(input("Ingrese el número de participantes: "))
-    lista = participantes(numParticipantes)
-    numeroRandom = random.randrange(numParticipantes)
-    print(f"Ganador {lista[numeroRandom]}")
-    
-    def participantes(numParticipantes):
-        lista=[]
-        lista.append(input("ingrese el nombre de los participantes: ")
-        #print(lista)
-        return lista
-    '''
+    messagebox.showinfo("Datos claros!","RECUERDA QUE EL NOMBRE INGRESADO, DEBE SER MAYOR DE 3 CARACTERES!")  
     ######gui########
     lbl1 = Label(gui,text="número de participantes: ")
     lbl2 = Label(gui, text="El participante ganador es: ")
