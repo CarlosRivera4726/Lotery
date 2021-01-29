@@ -20,7 +20,7 @@ def participantes(numero):
                       lista.append(nombreParticipante)  
 
             numeroRandom = random.randrange(numeroParticipantes)
-            participantes = lista[numRandom]
+            participantes = lista[numeroRandom]
             ganador = str(participantes)
 
             messagebox.showinfo("Winner",f"el participante ganador es: \n\n\t{numeroRandom+1}) {ganador}")
